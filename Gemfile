@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'slim-rails' 
+gem 'koala'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
