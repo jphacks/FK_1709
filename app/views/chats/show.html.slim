@@ -1,0 +1,27 @@
+/ p#notice = notice
+/
+/ p
+/   strong Male:
+/   = @chat.male_id
+/ p
+/   strong Female:
+/   = @chat.female_id
+/
+/ => link_to 'Edit', edit_chat_path(@chat)
+/ '|
+/ =< link_to 'Back', chats_path
+
+- @messages.each do |message|
+  p
+    = "#{message.user_id} :"
+
+    - if message.message_type == 0
+       = message.text
+    - elsif message.message_type == 1
+       = message.image
+
+= form_for Message.new, url: messages_path do |f|
+  = f.text_field :text
+  = f.hidden_field :chat_id, value: @chat_id
+  = f.hidden_field :message_type, value: 0
+  = f.submit

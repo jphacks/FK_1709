@@ -27,7 +27,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
-gem 'slim-rails' 
+gem 'slim-rails'
+gem 'omniauth'
+gem 'omniauth-facebook', "~> 4.0.0"
+gem 'koala'
+gem 'dotenv-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
