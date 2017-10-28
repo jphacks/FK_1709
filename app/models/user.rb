@@ -11,10 +11,15 @@ class User < ApplicationRecord
 
   enum sex: { male: 0, female: 1 }
 
-  enum married_status: { unanswered_ms: 0, unmarried: 1,　divorce: 2, widowed: 3 }
+  enum married_status: { unanswered_ms: 0, unmarried: 1, divorce: 2, widowed: 3 }
 
   mount_uploader :image, ImageUploader
 
+  def age
+    date_format = "%Y%m%d"
+    (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000
+  end
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.name = auth.info.name

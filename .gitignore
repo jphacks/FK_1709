@@ -43,3 +43,9 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+<<<<<<< HEAD
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+=======
+>>>>>>> a6998e4129726cdf6e2362ada9e0450c12c2f4d4
