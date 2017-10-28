@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'search/index'
+  get 'search/users/:id' => 'search#show'
 
   resources :chats
   resources :messages
