@@ -23,7 +23,7 @@ class ChatsController < ApplicationController
     chat = Chat.find(@chat_id)
 
     @my_id = current_user.id
-1
+
     if @my_id != chat.female_id
       @to_id = chat.female_id
     else
