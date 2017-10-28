@@ -28,7 +28,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'slim-rails'
-gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'omniauth-facebook', "~> 4.0.0"
 gem 'koala'
 gem 'dotenv-rails'
 
