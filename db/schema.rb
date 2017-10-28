@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20171028021824) do
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "male_id"
+    t.integer "female_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "chat_id"
+    t.integer "user_id"
+    t.integer "message_type"
+    t.text "text"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+=======
 ActiveRecord::Schema.define(version: 20171026150937) do
+>>>>>>> c57e829c25f80e3d0d42e5094c28f3b8f7e8b82d
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

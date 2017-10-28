@@ -1,0 +1,26 @@
+h1 Listing chats
+
+table
+  thead
+    tr
+      th Male
+      th Female
+      th
+      th
+      th
+
+  tbody
+
+    - @chats.each do |chat|
+      tr
+        td = chat.male_id
+        td = chat.female_id
+        td = link_to 'Show', chat
+        td = link_to 'Edit', edit_chat_path(chat)
+        td = link_to 'Destroy', chat, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+p
+  = link_to 'New Chat', new_chat_path
+p
+  = link_to "logout", destroy_user_session_path, method: :DELETE
