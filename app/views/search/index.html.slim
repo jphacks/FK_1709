@@ -17,7 +17,10 @@
             input.search-query.span3 placeholder="Search" type="text" /
 
   .main-collection-list
-    .personal-view
-      .image-display
-        = image_tag 'freeimg1.jpg', :size =>'120x120'
-      .container
+    - 10.times do
+      .personal-view
+        .image-display
+          = image_tag 'freeimg1.jpg', :size =>'140x140'
+        .container
+          .personal-info-name あやか
+    
