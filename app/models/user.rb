@@ -12,5 +12,13 @@ class User < ApplicationRecord
   enum sex: { male: 0, female: 1 }
 
   enum married_status: { unanswered_ms: 0, unmarried: 1,　divorce: 2, widowed: 3 }
-              
+  
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      # user.avatar = auth.info.image
+    end
+  end
 end
