@@ -3,6 +3,8 @@ import MeCab
 import json
 import glob
 from gensim import corpora, models
+from sklearn import svm, grid_search
+from sklearn.externals import joblib
 
 
 def doc2word_list(doc):
@@ -14,7 +16,7 @@ def doc2word_list(doc):
   bow_list = []
   while node:
     meta = node.feature.split(',')
-    if meta[0] == '名詞' or meta[0] == '動詞':
+    if meta[0] == '名詞' and meta[6] != '*':  # or meta[0] == '動詞':
       bow_list.append(meta[6])
     node = node.next
 
@@ -53,16 +55,50 @@ def main():
   # BoWで各記事をベクトルに変換
   print('bow')
   dic = corpora.Dictionary(documents)
+  dic.filter_extremes(no_below = 20, no_above = 0.3)
   bow_corpus = [dic.doc2bow(d) for d in documents]
+  print('+++++ {0} +++++'.format(bow_corpus[0]))
+  # 辞書の保存
+  dic.save_as_text('./svm_resources5/livedoordic.txt')
   # tf-idfによる単語の重み付け
   print('tf-idf')
   tfidf_model = models.TfidfModel(bow_corpus)
   tfidf_corpus = tfidf_model[bow_corpus]
+  print('----- {0} -----'.format(tfidf_corpus[0]))
+  # tf-idfモデルの保存
+  tfidf_model.save('./svm_resources5/tfidf_model.model')
   # LSIによる次元圧縮
   print('lsi')
   lsi_model = models.LsiModel(tfidf_corpus, id2word = dic, num_topics=300)
   lsi_corpus = lsi_model[tfidf_corpus]
+  # lsiモデルの保存
+  lsi_model.save('./svm_resources5/lsi_model.model')
   print('finish')
+
+  train_doc = []
+
+  # 文書ベクトルの取得
+  for doc in lsi_corpus:
+    tmp_list = []
+    for doc_tuple in doc:
+      tmp_list.append(doc_tuple[1])
+    train_doc.append(tmp_list)
+
+
+  # SVM分類器の実装
+  # Grid Search用のパラメータ
+  # cs = [0.001, 0.01, 0.1, 1, 10]
+  # gammas = [0.001, 0.01, 0.1, 1]
+  # parameters = {'kernel': ['rbf'], 'C': cs, 'gamma': gammas}
+
+  # svc = svm.SVC()
+  # clf = grid_search.GridSearchCV(svc, parameters)
+  clf = svm.SVC(C = 10, gamma = 0.1, kernel = 'rbf')
+  clf.fit(train_doc, labels)
+
+  joblib.dump(clf, './svm_resources5/svm.pkl.cmp', compress=True)
+
+  # print('Grid Score: {0}'.format(clf.best_params_))
 
 
 if __name__ == '__main__':
