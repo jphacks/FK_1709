@@ -24,3 +24,6 @@ p
   = link_to 'New Chat', new_chat_path
 p
   = link_to "logout", destroy_user_session_path, method: :DELETE
+
+p
+  = image_tag @image.to_s

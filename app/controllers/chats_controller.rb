@@ -6,6 +6,8 @@ class ChatsController < ApplicationController
   def index
     id = current_user.id
 
+    @image = User.find(id)
+
     @chats = Chat.where(female_id: id).or(Chat.where(male_id: id))
   end
 
