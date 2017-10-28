@@ -43,18 +43,25 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.json
   def create
-    # 二人のuser_idを受け取り、Chatのインスタンスを作り、DBに保存 
+    # 二人のuser_idを受け取り、Chatのインスタンスを作り、DBに保存
+    #
     @chat = Chat.new(chat_params)
 
-    respond_to do |format|
-      if @chat.save
-        format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
-        format.json { render :show, status: :created, location: @chat }
-      else
-        format.html { render :new }
-        format.json { render json: @chat.errors, status: :unprocessable_entity }
-      end
+    if @chat.save!
+
+    else
+
     end
+    
+    # respond_to do |format|
+    #   if @chat.save
+    #     format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
+    #     format.json { render :show, status: :created, location: @chat }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @chat.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /chats/1
