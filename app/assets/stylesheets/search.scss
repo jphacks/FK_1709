@@ -1,23 +1,32 @@
-.tabbar{
-  margin: 5px;
-  font-size: 5px;
+.search{
+  padding: 50px 0 0 0;
 }
 
-.searchtop{
-  display: inline-block;
-}
-
-.searchbar{
-  border: 1px solid #aaa;
-  width: 150px;
+search-searchtop{
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
 }
 
 .search-tabbar{
-  border: 1px solid #aaa;
+  // border: 1px solid #aaa;
   width: 400px;
   text-align: center;
   margin: 10px,　0px,　10px,　0px;
   font-size: 1px;
+  text-align: center;
+}
+
+.search-tabbar-item{
+  display: inline-block;
+  width: 17%;
+  float: left;
+  border: 1px solid #aaa;
 }
 
 .main-collection-list {
