@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     build_resource(params)
     yield resource if block_given?
-    respond_with resource    
+    respond_with resource
   end
 
   # POST /resource
@@ -69,12 +69,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :sex, :birthday,:marred_status, :sibling, :job, :income])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :sex, :birthday,:marred_status, :sibling, :job, :income, :image])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :sex, :birthday, :marred_status, :sibling, :job, :income])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :sex, :birthday, :marred_status, :sibling, :job, :income, :image])
   end
 
   # The path used after sign up.

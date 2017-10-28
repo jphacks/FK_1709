@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
+         :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
   validates :name, presence: true
@@ -12,7 +12,9 @@ class User < ApplicationRecord
   enum sex: { male: 0, female: 1 }
 
   enum married_status: { unanswered_ms: 0, unmarried: 1,　divorce: 2, widowed: 3 }
-  
+
+  mount_uploader :image, ImageUploader
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.name = auth.info.name
