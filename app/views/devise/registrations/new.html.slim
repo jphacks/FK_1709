@@ -1,49 +1,62 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  hr
-  .filed
-    = f.label :imgae
-    = f.file_field :image
-  .field
-    = f.label :sex, :性別
-    = f.radio_button :sex, :male
-    | 男性
-    = f.radio_button :sex, :female
-    | 女性
-  .field
-    = f.label :birthday
-    = f.date_field :birthday
-  .field
-    = f.label :sibling
-    = f.select :sibling, { "回答しない": 0, "長男/長女": 1, "次男/次女": 2, "三男/三女": 3, "その他": 4 }
-  .field
-    = f.label :job
-    = f.text_field :job
-  .field
-    = f.label :income
-    = f.select :income, { "回答しない": 0, "200万円未満": 1, "200万円以上400万円未満": 2, "400万円以上600万円未満":3, "600万円以上800万円未満": 4, "800万円以上1000万円未満": 5, "1000万円以上2000万円未満": 6, "2000万円以上3000万円未満": 7, "3000万円以上": 8 }
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.registration
+  .header
+    = image_tag asset_path('top/logo2.svg')
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    h2 アカウント情報
+    section
+      .field
+        = f.label :email, 'Eメールアドレス'
+        br
+        = f.email_field :email, autofocus: true
+      .field
+        = f.label :name, 'お名前'
+        = f.text_field :name
+      .field
+        = f.label :password, 'パスワード'
+        - if @minimum_password_length
+          em
+            | (
+            = @minimum_password_length
+            | 文字以上)
+        br
+        = f.password_field :password, autocomplete: "off"
+      .field
+        = f.label :password_confirmation, 'パスワード確認'
+        br
+        = f.password_field :password_confirmation, autocomplete: "off"
+    h2 アカウント情報    
+    section
+      .field
+        = f.label :sex, '性別'
+        br
+        .row
+          .col-xs-4
+            = f.radio_button :sex, :male
+            |  男性
+          .col-xs-4
+            = f.radio_button :sex, :female
+            |  女性
+      .field
+        = f.label :birthday, '生年月日'
+        = f.date_field :birthday
+      .field
+        = f.label :sibling, '兄弟姉妹'
+        = f.select :sibling, { "回答しない": 0, "長男/長女": 1, "次男/次女": 2, "三男/三女": 3, "その他": 4 }
+      .field
+        = f.label :job, '仕事'
+        = f.text_field :job
+      .field
+        = f.label :income, '収入'
+        = f.select :income, { "回答しない": 0, "200万円未満": 1, "200万円以上400万円未満": 2, "400万円以上600万円未満":3, "600万円以上800万円未満": 4, "800万円以上1000万円未満": 5, "1000万円以上2000万円未満": 6, "2000万円以上3000万円未満": 7, "3000万円以上": 8 }
+      .field#jsInputFile
+        = f.label :image, 'プロフィール画像'
+        br
+        = f.file_field :image, style: 'display:none', accept: "image/*"
+        button class="btn" 画像を選択する
+        span.icon 未選択
+
+        
+    .actions
+      = f.submit "登録する" ,class: 'btn'
+
