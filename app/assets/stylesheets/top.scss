@@ -1,3 +1,61 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top {
+  height: 100vh;
+  
+  .top-background-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  
+    display: block;
+    
+    background-image: image-url('top/top2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: auto 100%;
+
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -o-filter: blur(7px);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+  
+    height: 100%;
+    width: 100%;
+  }
+  .top-contents{
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    margin-left: 20px;
+    margin-right: 20px;
+    h1 {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+      line-height: 1.4em;
+      font-family: "メイリオ", sans-serif;
+      text-align: center;
+      color: white;
+      font-size: 2em;
+      text-shadow: 1px 1px 1px #aaa;
+      margin: 50px 20px;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;      
+    }
+    img.logo {
+      margin-top: 100px;   
+      width: 100%;
+    }
+    .top-facebook-login {
+      
+      //  position: fixed;
+      z-index: 9999;
+    }
+  }
+}
+

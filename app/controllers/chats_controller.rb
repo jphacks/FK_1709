@@ -6,6 +6,8 @@ class ChatsController < ApplicationController
   def index
     id = current_user.id
 
+    @image = User.find(id).image
+
     @chats = Chat.where(female_id: id).or(Chat.where(male_id: id))
   end
 
@@ -15,12 +17,23 @@ class ChatsController < ApplicationController
     # Chatのidを指定しDBから指定したChat idのMessageにアクセス。
     #  message_typeからtextかimageを出力するか決定し、userと一緒に出力
 
-    @user_id = 1
+<<<<<<< HEAD
+=======
+    @user_id = current_user.id
 
+>>>>>>> ea962295c83ce4f2a635168d4dd3c5491bd78992
     @chat_id = params[:id].to_i
+    chat = Chat.find(@chat_id)
+
+    @my_id = current_user.id
+1
+    if @my_id != chat.female_id
+      @to_id = chat.female_id
+    else
+      @to_id = chat.male_id
+    end
 
     @messages = Message.where(chat_id: @chat_id)
-
 
   end
 

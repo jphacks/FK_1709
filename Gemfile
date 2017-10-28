@@ -32,6 +32,8 @@ gem 'omniauth'
 gem 'omniauth-facebook', "~> 4.0.0"
 gem 'koala'
 gem 'dotenv-rails'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
