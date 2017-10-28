@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171028021824) do
 
   create_table "chats", force: :cascade do |t|
@@ -30,6 +31,9 @@ ActiveRecord::Schema.define(version: 20171028021824) do
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
+=======
+ActiveRecord::Schema.define(version: 20171026150937) do
+>>>>>>> c57e829c25f80e3d0d42e5094c28f3b8f7e8b82d
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +48,16 @@ ActiveRecord::Schema.define(version: 20171028021824) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "sex"
+    t.date "birthday"
+    t.integer "married_status"
+    t.integer "sibling"
+    t.string "job"
+    t.integer "income"
+    t.integer "uid", limit: 8
+    t.string "provider"
+    t.string "token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
