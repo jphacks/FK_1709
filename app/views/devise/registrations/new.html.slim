@@ -1,11 +1,14 @@
 h2
-  | Sign up
+  | Sign up 
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .field
     = f.label :email
     br
     = f.email_field :email, autofocus: true
+  .field
+    = f.label :name
+    = f.text_field :name
   .field
     = f.label :password
     - if @minimum_password_length
@@ -19,6 +22,25 @@ h2
     = f.label :password_confirmation
     br
     = f.password_field :password_confirmation, autocomplete: "off"
+  hr
+  .field
+    = f.label :sex, :性別
+    = f.radio_button :sex, :male
+    | 男性
+    = f.radio_button :sex, :female
+    | 女性
+  .field
+    = f.label :birthday
+    = f.date_field :birthday
+  .field
+    = f.label :sibling
+    = f.select :sibling, { "回答しない": 0, "長男/長女": 1, "次男/次女": 2, "三男/三女": 3, "その他": 4 }
+  .field
+    = f.label :job
+    = f.text_field :job
+  .field
+    = f.label :income
+    = f.select :income, { "回答しない": 0, "200万円未満": 1, "200万円以上400万円未満": 2, "400万円以上600万円未満":3, "600万円以上800万円未満": 4, "800万円以上1000万円未満": 5, "1000万円以上2000万円未満": 6, "2000万円以上3000万円未満": 7, "3000万円以上": 8 }
   .actions
     = f.submit "Sign up"
 = render "devise/shared/links"
