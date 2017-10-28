@@ -1,19 +1,23 @@
 = render 'partials/tablist'
 
-body
-  .searchtop
-    .searchbar
+.search
+  .search-searchtop
+
+  .row
+    .col-xs-2.search-tabbar 知り合いかも
+    .col-xs-2.search-tabbar 知り合い
+    .col-xs-2.search-tabbar お気に入り
+
+    .search-searchbar
       .searchbar-inner
         .container
-          /! タイトルとかメニュー
+          /! タイトルとかメニュ
           .navbar-search
             .icon-search
             input.search-query.span3 placeholder="Search" type="text" /
 
-    .tabbar
-      .tabbar-inner　
-       ul  　
-         li 知り合い 　   　　
-         li 友人 　   　　
-         li お気に入り 　
-    
+  .main-collection-list
+    .personal-view
+      .image-display
+        = image_tag 'freeimg1.jpg', :size =>'120x120'
+      .container

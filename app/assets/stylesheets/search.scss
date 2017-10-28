@@ -1,4 +1,33 @@
-.navbar.navbar-fixed-top{
-  margin: 100px;
-  font-size: 40px;
+.tabbar{
+  margin: 5px;
+  font-size: 5px;
+}
+
+.searchtop{
+  display: inline-block;
+}
+
+.searchbar{
+  border: 1px solid #aaa;
+  width: 150px;
+}
+
+.search-tabbar{
+  border: 1px solid #aaa;
+  width: 400px;
+  text-align: center;
+  margin: 10px,　0px,　10px,　0px;
+  font-size: 1px;
+}
+
+.main-collection-list {
+  background: #BDBDBD;
+  margin-top: 10px;
+  height: 600px;
+}
+
+.personal-view{
+  background: #F6CED8;
+  height: 150;
+  width: 150;
 }
