@@ -17,11 +17,8 @@ class ChatsController < ApplicationController
     # Chatのidを指定しDBから指定したChat idのMessageにアクセス。
     #  message_typeからtextかimageを出力するか決定し、userと一緒に出力
 
-<<<<<<< HEAD
-=======
     @user_id = current_user.id
 
->>>>>>> ea962295c83ce4f2a635168d4dd3c5491bd78992
     @chat_id = params[:id].to_i
     chat = Chat.find(@chat_id)
 
