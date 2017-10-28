@@ -71,9 +71,13 @@ font-size: 20px;
       width: 150px;
       height: 20px;
     }
-    // input#commit{
-    //     background: #5999ff;
-    // }
+    input.button{
+        color: white;
+        height: 25px;
+        margin-left: 10px;
+        border-radius: 5px;
+        background: #5999ff;
+     }
 
 
   }
