@@ -12,7 +12,12 @@
 / =< link_to 'Back', chats_path
 
 - @messages.each do |message|
+
+  - image = User.find(message.user_id).image
+
   p
+    = image_tag image,:size => '100x100'
+
     = "#{message.user_id} :"
 
     - if message.message_type == 0
