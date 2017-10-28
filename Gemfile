@@ -34,6 +34,7 @@ gem 'koala'
 gem 'dotenv-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'config'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

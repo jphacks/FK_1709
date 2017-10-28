@@ -122,3 +122,95 @@ body {
 // .likes{
 //   border-radius: 0px 0px 15px 15px;
 // }
+// search/show
+.search-show {
+  position: relative;
+  height: 100vh;
+  .visual-image {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    background-color: #ccc;
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -o-filter: blur(7px);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+  }
+  .user-image {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+
+    height: 100px;
+    text-align: center;
+    width: 100%;
+    img {
+      object-fit: cover;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+  }
+  .user-info {
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    margin-bottom: 100px;
+    p.user-name {
+      text-align: right;
+      padding: 30px 15px 0 0;
+      font-size: 1.3em;
+    }
+    .user-status {
+      width: 100%;
+    }
+    .user-basic-info {
+      p {
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 10px;
+      }
+    }
+  }
+
+  .user-like-button {
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+    z-index: 9999;
+    text-align: center;
+    img {
+      width: 90%;
+      max-width: 600px;
+    }
+  }
+  .balloon-top {
+    position: relative;
+    display: inline-block;
+     margin: 1.5em 5%;
+    padding: 7px 10px;
+    min-width: 120px;
+    width: 100%;
+     max-width: 90%;
+     color: #555;
+    font-size: 16px;
+    background: #e0edff;
+  }
+
+  .balloon-top:before{
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 70px;
+     margin-left: -15px;
+    border: 15px solid transparent;
+    border-bottom: 15px solid #e0edff;
+  }
+
+  .balloon-top p {
+    margin: 0;
+    padding: 0;
+  }
+
+}
