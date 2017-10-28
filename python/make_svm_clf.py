@@ -44,7 +44,7 @@ def main():
   # 学習データの記事から単語リストと正解ラベルのリストを作成する
   for i in range(len(label_dir_dict)):
     print(label_dir_dict[str(i)])
-    file_list = sorted(glob.glob('./text/' + label_dir_dict[str(i)] + '/*.txt'))
+    file_list = sorted(glob.glob('./livedoor-news-data/text/' + label_dir_dict[str(i)] + '/*.txt'))
     for filename in file_list:
       with open(filename, 'r') as f:
         documents.append(doc2word_list(f.readline().replace('\n', '')))
