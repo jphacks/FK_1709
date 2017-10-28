@@ -9,15 +9,17 @@
   
     .search-searchbar-item
       .search-tabbar
-        .search-tabbar-item.maybe 知り合いかも
-        .search-tabbar-item.acquaintance 知り合い
-        .search-tabbar-item.likes お気に入り
+        .search-tabbar-item.maybe
+          a data-animation="ripple" 知り合いかも
+        .search-tabbar-item.acquaintance
+          a data-animation="ripple" 知り合い
+        .search-tabbar-item.likes
+          a data-animation="ripple" お気に入り
 
   .main-collection-list
-    - 10.times do
+    - 15.times do
       .personal-view
         .image-display
           = image_tag 'freeimg1.jpg', :size =>'140x140'
         .container
           .personal-info-name さんぜんまん
-    
