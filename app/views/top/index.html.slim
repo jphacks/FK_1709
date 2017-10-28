@@ -1,6 +1,11 @@
 - if user_signed_in?
   p ログインしてます！！
-  = link_to "logout", destroy_user_session_path, method: :DELETE
+
+  p
+    = link_to "chat", chats_path
+  p
+    = link_to "logout", destroy_user_session_path, method: :DELETE
 - else
   p ログインしてません!!
   = link_to "login", new_user_session_path
+  = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
