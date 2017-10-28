@@ -20,7 +20,7 @@ class ChatsController < ApplicationController
     chat = Chat.find(@chat_id)
 
     @my_id = current_user.id
-1
+
     if @my_id != chat.female_id
       @to_id = chat.female_id
     else
@@ -43,6 +43,7 @@ class ChatsController < ApplicationController
   # POST /chats
   # POST /chats.json
   def create
+    # 二人のuser_idを受け取り、Chatのインスタンスを作り、DBに保存 
     @chat = Chat.new(chat_params)
 
     respond_to do |format|
