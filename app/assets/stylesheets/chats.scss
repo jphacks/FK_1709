@@ -57,7 +57,8 @@ font-size: 20px;
 }
 
 .chat_footer{
-  background: #f2f7ff;
+  border: solid 1px #edf1ee;
+  background: #ffffff;
   position: absolute;
   bottom:0;
   width: 100%;
@@ -66,11 +67,14 @@ font-size: 20px;
   .send{
     text-align: center;
     input#message_text{
-      border-radius: 12px;
+      border-radius: 5px;
+      width: 150px;
+      height: 20px;
     }
-
-    // .button{
-    //   background-color: #000;
+    // input#commit{
+    //     background: #5999ff;
     // }
+
+
   }
 }
