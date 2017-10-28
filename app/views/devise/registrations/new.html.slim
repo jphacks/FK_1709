@@ -1,5 +1,5 @@
 h2
-  | Sign up 
+  | Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .field
@@ -23,6 +23,9 @@ h2
     br
     = f.password_field :password_confirmation, autocomplete: "off"
   hr
+  .filed
+    = f.label :imgae
+    = f.file_filed :image
   .field
     = f.label :sex, :性別
     = f.radio_button :sex, :male
