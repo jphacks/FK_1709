@@ -1,3 +1,76 @@
 // Place all the styles related to the Chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chat_header{
+    background: #6ab82d;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.chat{
+font-size: 20px;
+
+  .me{
+     text-align: right;
+     margin-right: 20px;
+     margin-bottom: 0px;
+      .message{
+        display: inline-block;
+        position: relative;
+        // margin: 0 0 0 50px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        max-width: 250px;
+        border-radius: 12px;
+        background: #edf1ee;
+      }
+  img{
+    border-radius: 50%;
+      }
+  }
+}
+
+  .to{
+    margin-left: 20px;
+    margin-bottom: 0px;
+    .message{
+      display: inline-block;
+      position: relative;
+      // margin: 0 0 0 50px;
+      margin-left: 10px;
+      margin-bottom: 20px;
+      padding: 10px;
+      max-width: 250px;
+      border-radius: 12px;
+      background: #edf1ee;
+    }
+    img{
+      border-radius: 50%;
+    }
+}
+
+.chat_footer{
+  background: #f2f7ff;
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .send{
+    text-align: center;
+    input#message_text{
+      border-radius: 12px;
+    }
+
+    // .button{
+    //   background-color: #000;
+    // }
+  }
+}

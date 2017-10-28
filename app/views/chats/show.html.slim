@@ -11,22 +11,37 @@
 / '|
 / =< link_to 'Back', chats_path
 
-- @messages.each do |message|
+.chat_header
+  h1
+   = User.find(@to_id).name
 
-  - image = User.find(message.user_id).image
+.chat
+  - @messages.each do |message|
+    - if @my_id == message.user_id
+      .me
+        - if message.message_type == 0
+         .message
+          p
+           = message.text
+        - elsif message.message_type == 1
+          = message.image
+        - image = User.find(message.user_id).image
+        = image_tag image,:size => '50x50'
+    - else
+      - image = User.find(message.user_id).image
+      .to
+        = image_tag image,:size => '50x50'
+        - if message.message_type == 0
+         .message
+          p
+           = message.text
+        - elsif message.message_type == 1
+          = message.image
 
-  p
-    = image_tag image,:size => '100x100'
-
-    = "#{message.user_id} :"
-
-    - if message.message_type == 0
-       = message.text
-    - elsif message.message_type == 1
-       = message.image
-
-= form_for Message.new, url: messages_path do |f|
-  = f.text_field :text
-  = f.hidden_field :chat_id, value: @chat_id
-  = f.hidden_field :message_type, value: 0
-  = f.submit
+.chat_footer
+  .send
+    = form_for Message.new, url: messages_path do |f|
+      = f.text_field :text
+      = f.hidden_field :chat_id, value: @chat_id
+      = f.hidden_field :message_type, value: 0
+      = f.submit "send"
