@@ -7,6 +7,12 @@ from sklearn import svm
 # grid_search
 from sklearn.externals import joblib
 import sys
+import numpy as np
+
+
+def calc_cos_sim(vec1, vec2):
+
+  return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
 
 
 def doc2word_list(doc):
@@ -25,15 +31,39 @@ def doc2word_list(doc):
   return bow_list
 
 
-# def calc_recommend_word(cat_word, test_doc, cat_kw_list):
-# 
-#   kw_list = []
-# 
-#   for el in cat_kw_list:
-#     if el['category'] == cat_word:
-#       kw_list = el['detail_word']
+def calc_recommend_word(cat_word, test_list, cat_kw_list):
 
-  
+  kw_idx = 0
+
+  for idx in range(len(cat_kw_list)):
+    if cat_kw_list[idx]['category'] == cat_word:
+      kw_idx = idx
+      break
+
+  model = models.Word2Vec.load('./nlp_resources/200-w2v-final.model')
+
+  ave_doc = np.zeros(200)
+  word_num = 0
+
+  for word in test_list:
+    if not np.isnan(model[word].all()):
+      ave_doc += model[word]
+      word_num += 1
+  ave_doc /= word_num
+
+  recommend_word = {'similarity': calc_cos_sim(ave_doc, model[cat_kw_list[kw_idx]['detail_word'][0]]), 'keyword': cat_kw_list[kw_idx]['detail_word'][0]}
+  print(recommend_word)
+  print('====================')
+
+  for idx in range(len(cat_kw_list[kw_idx]['detail_word']) - 1):
+    sim = calc_cos_sim(ave_doc,model[cat_kw_list[kw_idx]['detail_word'][idx + 1]])
+    print(sim)
+    if recommend_word['similarity'] < sim:
+      recommend_word['similarity'] = sim
+      recommend_word['keyword'] = cat_kw_list[kw_idx]['detail_word'][idx + 1]
+    print(recommend_word)
+
+  return recommend_word['keyword']
 
 
 def main():
@@ -42,6 +72,8 @@ def main():
   cat_kw_list = []
   with open('./json/category.json', 'r') as f:
     cat_kw_list = json.load(f)
+    for i in range(len(cat_kw_list)):
+      cat_kw_list[i]['detail_word'] = cat_kw_list[i]['detail_word'].split(',')
 
   # ラベルとカテゴリの対応
   label_cat_dict = {}
@@ -82,11 +114,11 @@ def main():
   clf = joblib.load('./svm_resources5/svm.pkl.cmp')
   predicted = clf.predict(test_doc)
 
-  # recommend_word_list = calc_recommend_word(label_cat_dict[str(predicted[0])], test_doc, cat_kw_list)
+  recommend_word = calc_recommend_word(label_cat_dict[str(predicted[0])], test_list, cat_kw_list)
 
   print('あなたの知り合いは{0}について興味があるかもしれません。'.format(label_cat_dict[str(predicted[0])]))
-  print('その中でも特に{0}や{1}、{2}について関心があるかもしれません。'.format('kw1', 'kw2', 'kw3'))
-  print('話題に困ったときはぜひご活用ください。')
+  print('その中でも特に{0}について関心があるかもしれません。'.format(recommend_word))
+  print('話題に困ったときはぜひその話をしてみましょう！')
 
 if __name__ == '__main__':
   main()
