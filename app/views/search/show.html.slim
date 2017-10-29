@@ -36,5 +36,7 @@
           tr
             th 収入:
             td = Settings.ja.income[@user.income]
+
+
   .user-like-button
-    = image_tag asset_path('like/LikeButton.svg')
+    =link_to image_tag asset_path(@image_path),{action: :show,like: 1}
