@@ -52,16 +52,12 @@ def calc_recommend_word(cat_word, test_list, cat_kw_list):
   ave_doc /= word_num
 
   recommend_word = {'similarity': calc_cos_sim(ave_doc, model[cat_kw_list[kw_idx]['detail_word'][0]]), 'keyword': cat_kw_list[kw_idx]['detail_word'][0]}
-  print(recommend_word)
-  print('====================')
 
   for idx in range(len(cat_kw_list[kw_idx]['detail_word']) - 1):
     sim = calc_cos_sim(ave_doc,model[cat_kw_list[kw_idx]['detail_word'][idx + 1]])
-    print(sim)
     if recommend_word['similarity'] < sim:
       recommend_word['similarity'] = sim
       recommend_word['keyword'] = cat_kw_list[kw_idx]['detail_word'][idx + 1]
-    print(recommend_word)
 
   return recommend_word['keyword']
 

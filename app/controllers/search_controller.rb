@@ -24,9 +24,17 @@ class SearchController < ApplicationController
     @like = Like.new(from_id: @myid, to_id: @user.id)
     @like.save
 
-    @like = Like.find_by(from_id: @myid, to_id: @user.id)
+    like1 = Like.find_by(from_id: @myid, to_id: @user.id)
+    like2 = Like.find_by(from_id: @user.id, to_id: @myid)
+
+    if like1 != nil && like2 != nil
+      chat = Chat.new(male_id: @myid, female_id: @user.id)
+      chat.save
+    end
 
     redirect_to "/search/users/#{@user.id}"
+
+
   end
 
   private
