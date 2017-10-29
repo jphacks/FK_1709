@@ -31,7 +31,12 @@ class User < ApplicationRecord
 
   def friend_ids
     friends = Friend.where(user_id: self.id)
-    friends.map {|f| f.friend_id}
+    arr = friends.map { |f| f.friend_id}
+
+    friends2 = Friend.where(friend_id: self.id)
+    arr2  = friends2.map{ |f| f.user_id }
+    arr.concat(arr2).uniq!
+    arr
   end
 
   def facebook
