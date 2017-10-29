@@ -5,12 +5,13 @@
 .message_header{
     background: #6ab82d;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     margin-bottom: 20px;
+
 }
 
 .message{
@@ -84,12 +85,13 @@ font-size: 20px;
 .chat_header{
   background: #6ab82d;
   color: white;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   text-align: center;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   margin-bottom: 20px;
+
 }
 
 .chat_main{
@@ -99,11 +101,13 @@ font-size: 20px;
     margin-top: 200px;
   }
   .to_user{
-    font-size: 30px;
-    margin-left: 10px;
+      font-size: 30px;
+      margin-left: 10px;
+
     img{
       border-radius: 50%;
       margin-left: 10px;
+      margin-right: 10px;
     }
   }
   }

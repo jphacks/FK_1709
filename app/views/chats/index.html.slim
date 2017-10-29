@@ -39,12 +39,12 @@
   - else
     - @chats.each do |chat|
       .to_user
-      - if chat.female_id ==  @id
-        - to_id = chat.male_id
-      - else
-        - to_id = chat.female_id
+        - if chat.female_id ==  @id
+          - to_id = chat.male_id
+        - else
+          - to_id = chat.female_id
 
-      - to_user = User.find(to_id)
-      = image_tag to_user.image,:size => '50x50'
-      = link_to to_user.name, chat
+        - to_user = User.find(to_id)
+        = image_tag to_user.image,:size => '70x70'
+        = link_to to_user.name, chat
       hr
