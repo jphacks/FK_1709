@@ -11,13 +11,42 @@
     text-align: center;
     padding-top: 20px;
     padding-bottom: 15px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
 
 }
 
 .message{
-font-size: 20px;
-
+  position: relative;
+  font-size: 20px;
+  .message-hint-btn{
+    background-color: #FFFF36;
+    border: 5px solid #CCCB33;
+    text-align: center; 
+    vertical-align: middle;
+    p {
+      padding-top: 8px;
+    }
+  }
+  .message-hint-content{
+    h3 {
+      text-align: center;
+    }
+    z-index: 9999;
+    box-sizing: border-box;
+    position: absolute;
+    top: 10px;
+    width: 90%;
+    height: auto;
+    padding: 5px;
+    margin: 5%;
+    background-color: white;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.4);
+    .close-btn-field {
+      text-align: right;
+    }
+    
+    
+  }
   .me{
      text-align: right;
      margin-right: 20px;

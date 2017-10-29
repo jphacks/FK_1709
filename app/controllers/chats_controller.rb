@@ -19,7 +19,7 @@ class ChatsController < ApplicationController
   def show
     # Chatのidを指定しDBから指定したChat idのMessageにアクセス。
     #  message_typeからtextかimageを出力するか決定し、userと一緒に出力
-
+    
     @chat_id = params[:id].to_i
     chat = Chat.find(@chat_id)
 

@@ -18,6 +18,14 @@
    = User.find(@to_id).name
 
 .message
+  .message-hint-btn
+    p もし話題に困ったら
+  .message-hint-content[style="display: none;"]
+    h3 アドバイス！
+    p = User.find(@to_id).recommend_text.gsub(/\r\n|\r|\n/, "<br />").html_safe
+    .close-btn-field
+      button.btn 閉じる
+
   - @messages.each do |message|
     - if @my_id == message.user_id
       .me
