@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
 
   get 'search/users/:id' => 'search#show'
-
+  post 'search/like/:id' => 'search#like'
   resources :chats
   resources :messages
 
