@@ -16,6 +16,7 @@
     - @users.each do |user|
         .personal-view
           .image-display
-            = image_tag user.image, :size =>'140x140'
+            = link_to search_show_path(user.id) do
+              = image_tag user.image, :size =>'140x140'
           .container
             .personal-info-name = user.name  
