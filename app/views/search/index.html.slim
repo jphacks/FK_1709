@@ -4,7 +4,7 @@
   .search-searchtop
     .search-searchbar
       input.search-name placeholder="名前で検索する" type="text" /
-  
+
   .search-tabbar
     .search-tabbar-item.maybe
       a data-animation="ripple" 知り合いかも
@@ -13,10 +13,9 @@
     .search-tabbar-item.likes
       a data-animation="ripple" お気に入り
 
-  .main-collection-list
-    - @users.each do |user| 
-      .personal-view
-        .image-display
-          = image_tag user.image, :size =>'140x140'
-        .container
-          .personal-info-name = user.name
+    - @users.each do |user|
+        .personal-view
+          .image-display
+            = image_tag user.image, :size =>'140x140'
+          .container
+            .personal-info-name = user.name  
