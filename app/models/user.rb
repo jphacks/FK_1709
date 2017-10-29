@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   after_save :save_friends
+  after_save :predict
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -69,4 +70,14 @@ class User < ApplicationRecord
     end
   end
 
+  def predict
+    p post_data
+    if self.post_data.present?
+      File.open("#{Rails.root}/python/users/#{self.id}.txt", "w") do |f| 
+        f.puts(self.post_data)
+    end      
+      p result = `cd #{Rails.root}/python; python predict_with_svm.py users/#{self.id}.txt` 
+      self.update_column(:recommend_text, result)
+    end
+  end
 end
