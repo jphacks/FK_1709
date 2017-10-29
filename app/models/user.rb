@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_save :save_friends
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,9 +16,38 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  def opposite_sex
+    if sex == 'male'
+      return 'female'
+    elsif sex == 'female'
+      return 'male'
+    end
+  end
+
   def age
     date_format = "%Y%m%d"
     (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000
+  end
+
+  def friend_ids
+    friends = Friend.where(user_id: self.id)
+    friends.map {|f| f.friend_id}
+  end
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(token)
+    block_given? ? yield(@facebook) : @facebook
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil # or consider a custom null object
+  end
+  
+  def friends_count
+    facebook { |fb| fb.get_connection("me", "friends").size }
+  end
+  
+  def facebook_friends
+    facebook { |fb| fb.get_connection("me", "friends") }
   end
   
   def self.from_omniauth(auth)
@@ -25,7 +55,13 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      # user.avatar = auth.info.image
     end
   end
+  private
+  def save_friends 
+    facebook_friends.each do |friend|
+      Friend.create(user_id: id, friend_id: User.find_by(uid: friend[:id]))
+    end
+  end
+
 end

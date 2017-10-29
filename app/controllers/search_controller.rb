@@ -1,5 +1,7 @@
 class SearchController < ApplicationController
   def index
+
+    @users = User.where(id: current_user.friend_ids)
   end
 
   def show
