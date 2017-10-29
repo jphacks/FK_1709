@@ -17,6 +17,7 @@
     - 15.times do
       .personal-view
         .image-display
-          = image_tag 'freeimg1.jpg', class: "image-view", :size =>'140x140'
+        / = link_to search_show_path(.id) do
+        = image_tag 'freeimg1.jpg', class: "image-view", :size =>'140x140'
         .container-item
           .personal-info-name さんぜんまん
