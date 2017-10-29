@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029013441) do
+ActiveRecord::Schema.define(version: 20171029034355) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "male_id"
@@ -18,12 +18,7 @@ ActiveRecord::Schema.define(version: 20171029013441) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
-  create_table "likes", force: :cascade do |t|
-    t.integer "from_id"
-    t.integer "to_id"
-  end
-  
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
