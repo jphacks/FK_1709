@@ -11,11 +11,12 @@
 / '|
 / =< link_to 'Back', chats_path
 
-.chat_header
-  h1
+.message_header
+
+  p
    = User.find(@to_id).name
 
-.chat
+.message
   - @messages.each do |message|
     - if @my_id == message.user_id
       .me
@@ -38,7 +39,7 @@
         - elsif message.message_type == 1
           = message.image
 
-.chat_footer
+.message_footer
   .send
     = form_for Message.new, url: messages_path do |f|
       = f.text_field :text
