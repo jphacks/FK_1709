@@ -5,12 +5,6 @@ class SearchController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    if params[:like].to_i == 1
-      like = Like.new(from_id: @myid, to_id: @user.id)
-      like.save
-    end
-
     @myid = current_user.id
 
     @like = Like.find_by(from_id: @myid, to_id: @user.id)
@@ -21,6 +15,18 @@ class SearchController < ApplicationController
       @image_path = 'like/LikedButton.svg'
     end
 
+  end
+
+  def like
+    @user = User.find(params[:id])
+    @myid = current_user.id
+
+    @like = Like.new(from_id: @myid, to_id: @user.id)
+    @like.save
+
+    @like = Like.find_by(from_id: @myid, to_id: @user.id)
+
+    redirect_to "/search/users/#{@user.id}"
   end
 
   private
