@@ -2,19 +2,16 @@
 
 .search
   .search-searchtop
+    .search-searchbar
+      input.search-name placeholder="名前で検索する" type="text" /
   
-    .search-searchbar-item
-      .search-searchbar
-        input.search-name placeholder="名前で検索する" type="text" /
-  
-    .search-searchbar-item
-      .search-tabbar
-        .search-tabbar-item.maybe
-          a data-animation="ripple" 知り合いかも
-        .search-tabbar-item.acquaintance
-          a data-animation="ripple" 知り合い
-        .search-tabbar-item.likes
-          a data-animation="ripple" お気に入り
+  .search-tabbar
+    .search-tabbar-item.maybe
+      a data-animation="ripple" 知り合いかも
+    .search-tabbar-item.acquaintance
+      a data-animation="ripple" 知り合い
+    .search-tabbar-item.likes
+      a data-animation="ripple" お気に入り
 
   .main-collection-list
     - @users.each do |user| 
