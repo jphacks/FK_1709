@@ -1,0 +1,43 @@
+.search-show
+  = image_tag @user.image, class: 'visual-image'
+  .user-image
+    = image_tag @user.image, class: 'user-image'
+  .user-info
+    p.user-name
+      = @user.name
+      = "(#{@user.age})"
+    .user-status
+      .balloon-top
+        p ねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむいねむい
+    .user-basic-info
+      p 基本情報
+      table.table
+        - if @user.name
+          tr
+            th 名前:
+            td = @user.name
+        - if @user.sex
+          tr
+            th 性別:
+            td = Settings.ja.sex[@user.sex]
+        - if @user.birthday
+          tr
+            th 誕生日:
+            td = @user.birthday
+        - if @user.married_status
+          tr
+            th 結婚歴
+            td = Settings.ja.married_status[@user.married_status]
+        - if @user.sibling
+          tr
+            th 兄弟姉妹:
+            td = Settings.ja.sibling[@user.sibling]
+        - if @user.income
+          tr
+            th 収入:
+            td = Settings.ja.income[@user.income]
+
+
+  .user-like-button
+    =link_to "/search/like/#{@user.id}", method: :POST do
+        = image_tag asset_path(@image_path)
