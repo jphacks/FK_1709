@@ -1,5 +1,5 @@
 .main-navigation{
-  margin-top: 5px;
+  margin-top: 0px;
   padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  // height: 50px;
   // max-width: 700psx;
   z-index: 10;
   opacity: 0.95;
@@ -25,9 +26,10 @@
   -ms-flex-pack: center;
   justify-content: center;
   width: 33.333%;
-  height: 50px;
+  height: 55px;
   background-color: #ffffff;
   text-decoration: none;
+  padding-top: 5px;
 }
 
 .navigation-item-label{
@@ -37,6 +39,7 @@
   display: block;
   width: 100%;
   text-align: center;
+  padding-bottom: 5px;
 }
 
 figure image_tag {
