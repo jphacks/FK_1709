@@ -1,6 +1,6 @@
 .main-navigation
   .main-navigation-item
-    = link_to search_path, class: "figure" do
+    = link_to search_path do
       = image_tag '004-smartphone.svg', :size =>'30x30'
     span.navigation-item-label 探す
   .main-navigation-item
@@ -8,6 +8,7 @@
       = image_tag '003-dialogue.svg', :size =>'30x30'
     span.navigation-item-label トーク
   .main-navigation-item
+    /  = link_to mypage_path do
     = image_tag '001-profile.svg', :size =>'30x30'
     span.navigation-item-label マイページ
 

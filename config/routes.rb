@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'mypage/show'
+  get 'mypage/users/:id' => 'search#show'
 
   get 'search' => 'search#index'
 
