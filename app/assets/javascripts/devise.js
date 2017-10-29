@@ -16,4 +16,10 @@ $(function() {
     $('.filename').html('ファイル名：' + file.name);
   });
   
+  $('.message-hint-btn').on('click', function() {
+    $('.message-hint-content').fadeIn();
+  });
+  $('.close-btn-field button').on('click', function() {
+    $('.message-hint-content').hide();    
+  });
 });
