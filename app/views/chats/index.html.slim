@@ -25,14 +25,25 @@
 / p
 /   = link_to "logout", destroy_user_session_path, method: :DELETE
 
-- @chats.each do |chat|
-  .to_user
-  - if chat.female_id ==  @id
-    - to_id = chat.male_id
-  -  else
-    - to_id = chat.female_id
+.chat_header
+  p
+    |チャット
 
-  - to_user = User.find(to_id)
-  = image_tag to_user.image,:size => '50x50'
-  = link_to to_user.name, chat
-  hr
+.chat_main
+  - if @chats.empty? == true
+    p
+      | トークできる相手がいません。
+      br
+      | 気になる人にいいねをしましょう。
+  - else
+    - @chats.each do |chat|
+      .to_user
+      - if chat.female_id ==  @id
+        - to_id = chat.male_id
+      - else
+        - to_id = chat.female_id
+
+      - to_user = User.find(to_id)
+      = image_tag to_user.image,:size => '50x50'
+      = link_to to_user.name, chat
+      hr

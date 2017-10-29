@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+
+  get 'search' => 'search#index'
+
+  get 'search/users/:id' => 'search#show'
+
   resources :chats
   resources :messages
+
   root 'top#index'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
