@@ -32,6 +32,12 @@
     height: 25px;
     box-sizing: border-box;
   }
+  textarea {
+    border: 1px solid #eee;
+    width: 100%;
+    box-sizing: border-box;
+
+  }
   #jsInputFile {
     span {
       margin-left: 10px;
