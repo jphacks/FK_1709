@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'search/users/:id' => 'search#show', as: 'search_show'
 
+  get 'search/users/:id' => 'search#show'
+  post 'search/like/:id' => 'search#like'
   resources :chats
   resources :messages
 
