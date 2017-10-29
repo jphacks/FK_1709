@@ -1,9 +1,9 @@
-.search-show 
-  = image_tag asset_path('freeimg1.jpg'), class: 'visual-image'
+.search-show
+  = image_tag @user.image, class: 'visual-image'
   .user-image
-    = image_tag asset_path('freeimg1.jpg'), class: 'user-image'
+    = image_tag @user.image, class: 'user-image'
   .user-info
-    p.user-name 
+    p.user-name
       = @user.name
       = "(#{@user.age})"
     .user-status
@@ -36,7 +36,7 @@
           tr
             th 収入:
             td = Settings.ja.income[@user.income]
+
+
   .user-like-button
-    = image_tag asset_path('like/LikeButton.svg')
-
-
+    =link_to image_tag asset_path(@image_path),{action: :show,like: 1}
