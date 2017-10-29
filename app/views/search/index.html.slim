@@ -14,9 +14,9 @@
       a data-animation="ripple" お気に入り
 
   .main-collection-list
-    - 15.times do
+    - @users.each do |user| 
       .personal-view
         .image-display
-          = image_tag 'freeimg1.jpg', class: "image-view", :size =>'140x140'
-        .container-item
-          .personal-info-name さんぜんまん
+          = image_tag user.image, :size =>'140x140'
+        .container
+          .personal-info-name = user.name
