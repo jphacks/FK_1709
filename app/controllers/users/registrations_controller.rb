@@ -22,6 +22,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     resource.uid = session['devise.facebook_data']['uid']
     resource.provider = session['devise.facebook_data']['provider']
+    resource.token = session['devise.facebook_data']['credentials']['token']
+
     resource.save
     yield resource if block_given?
     if resource.persisted?

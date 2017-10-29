@@ -10,12 +10,9 @@
   padding-left: 10px;
   width: 100%;
   text-align: center;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
-.search-searchbar-item{
-  // display: inline-block;
-}
 
 .search-searchbar{
   margin-bottom: 10px;
@@ -23,7 +20,7 @@
 
 .search-tabbar{
   // border: 1px solid #aaa;
-  width: 400px;
+  // width: 400px;
   text-align: center;
   // margin: 10px,　0px,　10px,　0px;
   font-size: 1px;
@@ -32,7 +29,7 @@
 
 .search-tabbar-item{
   display: inline-block;
-  width: 29.5%;
+  width: 33.3%;
   float: left;
   // border: 1px solid #aaa;
 }
@@ -53,19 +50,32 @@
 }
 
 .personal-view{
-  background: #eee;
+  background: #fafafa;
   width: 50%;
   display: inline-block;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .image-display{
   text-align: center;
 }
 
+.image-view{
+  border-radius: 15px 15px 15px 15px;
+  border: 1px solid #BFFF00;
+}
+
 .personal-info-name{
   text-align: center;
+  margin: 3px 30px 3px 30px;
+  border: 0.5px solid #F5DA81;
+  border-radius: 5px 5px 5px 5px;
 }
+
+// .image-display.container{
+//   vertical-align: middle;
+// }
 
 :root {
 	/* if u want to change the color of

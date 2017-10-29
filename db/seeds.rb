@@ -201,6 +201,6 @@ users_params.each do |params|
   elsif params[:sex] == 'female'
     params[:image] = open "#{Rails.root}/db/seed_files/women#{female_cnt}.jpg"
     User.create(params)    
-    female_cnt += 1  
+    female_cnt += 1
   end
 end
