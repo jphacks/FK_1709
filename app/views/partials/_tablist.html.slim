@@ -8,8 +8,8 @@
       = image_tag '003-dialogue.svg', :size =>'30x30'
     span.navigation-item-label トーク
   .main-navigation-item
-    /  = link_to mypage_path do
-    = image_tag '001-profile.svg', :size =>'30x30'
+    = link_to search_show_path(current_user.id) do
+      = image_tag '001-profile.svg', :size =>'30x30'
     span.navigation-item-label マイページ
 
 
